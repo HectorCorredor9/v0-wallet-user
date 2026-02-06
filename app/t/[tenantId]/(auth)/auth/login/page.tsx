@@ -50,7 +50,7 @@ export default function LoginPage() {
   }
   
   return (
-    <Card className="border-border/50 shadow-xl rounded-2xl">
+    <Card className="border-border/50 shadow-xl rounded-2xl mx-auto max-w-md">
       <CardHeader className="space-y-1 pb-4">
         <CardTitle className="text-2xl font-bold text-center">Iniciar sesión</CardTitle>
         <CardDescription className="text-center">
@@ -121,9 +121,19 @@ export default function LoginPage() {
           </Button>
         </form>
         
-        <div className="mt-6 text-center text-sm text-muted-foreground">
+        <div className="mt-6 space-y-2 text-center text-sm text-muted-foreground">
           <p>
-            ¿Demo? Usa cualquier email y contraseña (mín. 6 caracteres)
+            ¿No tienes cuenta?{' '}
+            <Link
+              href={authPath(tenantId, 'register')}
+              className="font-medium text-foreground hover:underline"
+              style={{ color: 'var(--brand-primary)' }}
+            >
+              Registrate aqui
+            </Link>
+          </p>
+          <p className="text-xs">
+            ¿Demo? Usa cualquier email y contrasena (min. 6 caracteres)
           </p>
         </div>
       </CardContent>
