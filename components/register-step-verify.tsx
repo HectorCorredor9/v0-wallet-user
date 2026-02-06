@@ -1,13 +1,15 @@
 'use client'
 
 import React, { useState } from 'react'
+import { useParams } from 'next/navigation'
+import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { RegistrationStepper } from '@/components/registration-stepper'
-import { Loader2, AlertCircle, ShieldCheck, HelpCircle } from 'lucide-react'
+import { Loader2, AlertCircle, ShieldCheck, HelpCircle, ArrowLeft } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
 
 export interface VerificationData {
@@ -21,6 +23,7 @@ interface RegisterStepVerifyProps {
 }
 
 export function RegisterStepVerify({ onVerified }: RegisterStepVerifyProps) {
+  const params = useParams<{ tenantId: string }>()
   const { toast } = useToast()
   const [idNumber, setIdNumber] = useState('')
   const [cardNumber, setCardNumber] = useState('')
@@ -207,6 +210,19 @@ export function RegisterStepVerify({ onVerified }: RegisterStepVerifyProps) {
                 <HelpCircle className="h-3.5 w-3.5" />
                 Necesitas ayuda?
               </button>
+            </div>
+
+            <div className="text-center pt-2">
+              <Button
+                variant="ghost"
+                asChild
+                className="text-sm text-muted-foreground hover:text-foreground"
+              >
+                <Link href={`/t/${params.tenantId}/auth/login`}>
+                  <ArrowLeft className="mr-1.5 h-4 w-4" />
+                  Volver al inicio de sesion
+                </Link>
+              </Button>
             </div>
           </form>
         </CardContent>
