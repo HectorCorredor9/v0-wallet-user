@@ -146,7 +146,6 @@ export function getMockTransactions(tenantId: string, userId: string = 'user-001
 export function getMockCards(tenantId: string, userId: string = 'user-001'): Card[] {
   const rand = seededRandom(`${tenantId}-cards-${userId}`)
   const brands: CardBrand[] = ['visa', 'mastercard']
-  const statuses: CardStatus[] = ['active', 'blocked', 'active', 'active'] // Weighted toward active
   
   const user = getMockUser(tenantId, userId)
   
@@ -155,6 +154,7 @@ export function getMockCards(tenantId: string, userId: string = 'user-001'): Car
       id: `card-${tenantId}-001`,
       userId,
       tenantId,
+      nickname: 'Tarjeta Principal',
       brand: brands[Math.floor(rand() * brands.length)],
       last4: Math.floor(rand() * 9000 + 1000).toString(),
       expiryMonth: Math.floor(rand() * 12) + 1,
@@ -173,11 +173,12 @@ export function getMockCards(tenantId: string, userId: string = 'user-001'): Car
       id: `card-${tenantId}-002`,
       userId,
       tenantId,
+      nickname: 'Compras Online',
       brand: brands[Math.floor(rand() * brands.length)],
       last4: Math.floor(rand() * 9000 + 1000).toString(),
       expiryMonth: Math.floor(rand() * 12) + 1,
       expiryYear: 2026,
-      status: statuses[Math.floor(rand() * statuses.length)],
+      status: 'active',
       cardholderName: user.name.toUpperCase(),
       linkedAccountId: `wallet-${tenantId}-${userId}`,
       limits: {
@@ -186,6 +187,63 @@ export function getMockCards(tenantId: string, userId: string = 'user-001'): Car
         perTransaction: 2000000,
       },
       createdAt: '2023-06-01T10:00:00Z',
+    },
+    {
+      id: `card-${tenantId}-003`,
+      userId,
+      tenantId,
+      nickname: 'Viajes',
+      brand: 'visa',
+      last4: Math.floor(rand() * 9000 + 1000).toString(),
+      expiryMonth: Math.floor(rand() * 12) + 1,
+      expiryYear: 2028,
+      status: 'active',
+      cardholderName: user.name.toUpperCase(),
+      linkedAccountId: `wallet-${tenantId}-${userId}`,
+      limits: {
+        daily: 15000000,
+        monthly: 80000000,
+        perTransaction: 10000000,
+      },
+      createdAt: '2024-06-20T10:00:00Z',
+    },
+    {
+      id: `card-${tenantId}-004`,
+      userId,
+      tenantId,
+      nickname: 'Ahorros',
+      brand: 'mastercard',
+      last4: Math.floor(rand() * 9000 + 1000).toString(),
+      expiryMonth: Math.floor(rand() * 12) + 1,
+      expiryYear: 2027,
+      status: 'blocked',
+      cardholderName: user.name.toUpperCase(),
+      linkedAccountId: `wallet-${tenantId}-${userId}`,
+      limits: {
+        daily: 3000000,
+        monthly: 10000000,
+        perTransaction: 1000000,
+      },
+      createdAt: '2024-03-10T10:00:00Z',
+    },
+    {
+      id: `card-${tenantId}-005`,
+      userId,
+      tenantId,
+      nickname: 'Suscripciones',
+      brand: 'visa',
+      last4: Math.floor(rand() * 9000 + 1000).toString(),
+      expiryMonth: 3,
+      expiryYear: 2025,
+      status: 'expired',
+      cardholderName: user.name.toUpperCase(),
+      linkedAccountId: `wallet-${tenantId}-${userId}`,
+      limits: {
+        daily: 2000000,
+        monthly: 8000000,
+        perTransaction: 500000,
+      },
+      createdAt: '2022-11-05T10:00:00Z',
     },
   ]
 }

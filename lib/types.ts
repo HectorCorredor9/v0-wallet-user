@@ -92,6 +92,7 @@ export interface Card {
   id: string
   userId: string
   tenantId: string
+  nickname: string
   brand: CardBrand
   last4: string
   expiryMonth: number
