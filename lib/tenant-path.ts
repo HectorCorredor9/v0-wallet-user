@@ -10,7 +10,7 @@ export function tenantPath(tenantId: string, path: string = ''): string {
 /**
  * Build auth routes
  */
-export function authPath(tenantId: string, route: 'login' | 'forgot-password' | 'reset-password' = 'login'): string {
+export function authPath(tenantId: string, route: 'login' | 'register' | 'forgot-password' | 'reset-password' = 'login'): string {
   return tenantPath(tenantId, `/auth/${route}`)
 }
 

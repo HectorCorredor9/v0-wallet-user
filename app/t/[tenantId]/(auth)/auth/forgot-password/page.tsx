@@ -34,7 +34,7 @@ export default function ForgotPasswordPage() {
   
   if (isSubmitted) {
     return (
-      <Card className="border-border/50 shadow-xl rounded-2xl">
+      <Card className="border-border/50 shadow-xl rounded-2xl mx-auto max-w-md">
         <CardHeader className="space-y-1 pb-4">
           <div className="mx-auto w-12 h-12 rounded-full bg-success/10 flex items-center justify-center mb-2">
             <CheckCircle2 className="w-6 h-6 text-success" />
@@ -60,7 +60,7 @@ export default function ForgotPasswordPage() {
   }
   
   return (
-    <Card className="border-border/50 shadow-xl rounded-2xl">
+    <Card className="border-border/50 shadow-xl rounded-2xl mx-auto max-w-md">
       <CardHeader className="space-y-1 pb-4">
         <CardTitle className="text-2xl font-bold text-center">Recuperar contraseña</CardTitle>
         <CardDescription className="text-center">
